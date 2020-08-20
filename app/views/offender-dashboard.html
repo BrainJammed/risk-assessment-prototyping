@@ -1,17 +1,25 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-GOV.UK Prototype Kit
+Offender risk score history
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row chart-holder">
     <div class="govuk-grid-column-two-thirds">
-        dashboard
         <div id="chart-area"></div>
     </div>
+</div>
+<div class="event-list">
+    <div class="rosha eventItem"><p>rosha</div>
+    <div class="ogres eventItem"><p>ogres</div>
+    <div class="ogres rosha eventItem"><p>ogres rosha</div>
+    <div class="eventItem"><p>Other event</div>
+    <div class="eventItem ogp"><p>ogp</div>
+    <div class="eventItem"><p>Other event</div>
+    <div class="eventItem ogp"><p>ogp</div>
+    <div class="eventItem"><p>Other event</div>
 </div>
 
 <script src="/public/javascripts/offender-chart.js"></script>

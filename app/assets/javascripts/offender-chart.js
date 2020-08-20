@@ -1,58 +1,85 @@
+var lines = ['rosha', 'ogres', 'ogp']
+
+function filterEventList (legends) {
+  $('.eventItem').show();
+
+  // first hide classes
+  if (!legends[0]) {
+    $('.' + lines[0]).hide();
+  }
+  if (!legends[1]) {
+    $('.' + lines[1]).hide();
+  }
+  if (!legends[2]) {
+    $('.' + lines[3]).hide();
+  }
+
+  // then show classes (in case a div has both classes)
+  if (legends[0]) {
+    $('.' + lines[0]).show();
+  }
+  if (legends[1]) {
+    $('.' + lines[1]).show();
+  }
+  if (legends[2]) {
+    $('.' + lines[3]).show();
+  }
+}
+
+function showOnlySeries(seriesToShow){
+  $('.eventItem').show();
+  $('.eventItem').not('.' + lines[seriesToShow]).hide();
+
+  $('.' + seriesToShow).show();
+}
+
 function renderChart () {
   var container = document.getElementById('chart-area')
   var data = {
-    categories: ['01/01/2016', '02/01/2016', '03/01/2016', '04/01/2016', '05/01/2016', '06/01/2016', '07/01/2016', '08/01/2016', '09/01/2016', '10/01/2016', '11/01/2016', '12/01/2016'],
+    categories: ['Q1 2019', 'Q2 2019', 'Q3 2019', 'Q4 2019', 'Q1 2020', 'Q2 2020', 'Q3 2020'],
     series: [
       {
-        name: 'Seoul',
-        data: [-3.5, -1.1, 4.0, 11.3, 17.5, 21.5, 24.9, 25.2, 20.4, 13.9, 6.6, -0.6]
+        name: 'ROSHA',
+        data: [35, '', 38, 34, 42, '', '', '', 22, '', 22, 21]
       },
       {
-        name: 'Seattle',
-        data: [3.8, 5.6, 7.0, 9.1, 12.4, 15.3, 17.5, 17.8, 15.0, 10.6, 6.4, 3.7]
+        name: 'OGRES',
+        data: [3.8, '', 7.0, '', 12.4, 45.3, '', '', '', 10.6, 6.4, '']
       },
       {
-        name: 'Sydney',
-        data: [22.1, 22.0, 20.9, 18.3, 15.2, 12.8, 11.8, 13.0, 15.2, 17.6, 19.4, 21.2]
+        name: 'OGP',
+        data: [22.1, 22.0, '', 18.3, '', 32.8, 21.8, 13.0, '', 17.6, '', 16.2]
       },
-      {
-        name: 'Moskva',
-        data: [-10.3, -9.1, -4.1, 4.4, 12.2, 16.3, 18.5, 16.7, 10.9, 4.2, -2.0, -7.5]
-      },
-      {
-        name: 'Jungfrau',
-        data: [-13.2, -13.7, -13.1, -10.3, -6.1, -3.2, 0.0, -0.1, -1.8, -4.5, -9.0, -10.9]
-      }
     ]
   }
   var options = {
     chart: {
-      width: 1160,
-      height: 540,
-      title: '24-hr Average Temperature'
+      width: 960,
+      height: 300,
+      title: 'Risk change overview'
     },
     yAxis: {
-      title: 'Temperature (Celsius)',
+      title: 'Risk score',
     },
     xAxis: {
-      title: 'Month',
+      title: 'Date',
       pointOnColumn: true,
       dateFormat: 'MMM',
       tickInterval: 'auto'
     },
     series: {
-      showDot: false,
-      zoomable: true
+      showDot: true,
+      zoomable: false
     },
     tooltip: {
-      suffix: '°C'
+      suffix: ''
     },
     plot: {
       bands: [
         {
           range: ['03/01/2016', '05/01/2016'],
           color: 'gray',
-          opacity: 0.2
+          opacity: 0.1
         }
       ],
       lines: [
@@ -66,16 +93,35 @@ function renderChart () {
   var theme = {
     series: {
       colors: [
+        '#58508d',
+        '#bc5090',
+        '#ff6361',
+        '#ffa600',
         '#83b14e', '#458a3f', '#295ba0', '#2a4175', '#289399',
         '#289399', '#617178', '#8a9a9a', '#516f7d', '#dddddd'
       ]
     }
   }
-// For apply theme
-// tui.chart.registerTheme('myTheme', theme);
-// options.theme = 'myTheme';
+  // Apply theme
+  tui.chart.registerTheme('myTheme', theme)
+  options.theme = 'myTheme'
   var chart = tui.chart.lineChart(container, data, options)
+
+  chart.on('selectSeries', function (info) {
+    console.log(info) // {chartType: String, legend: String, legendIndex: Number, index: number}
+    console.log('clicked on data point:' + info.index)
+  })
+  chart.on('selectLegend', function (info) {
+    console.log(info) // {chartType: String, legend: String, legendIndex: Number, index: number}
+    console.log('clicked on legend:' + info.index)
+    showOnlySeries(info.index)
+  })
+  chart.on('changeCheckedLegends', function (info) {
+    console.log(info) // {chartType: String, legend: String, legendIndex: Number, index: number}
+    console.log('changeCheckedLegends:' + info.line)
+    filterEventList(info.line)
+  })
+
 }
 
 window.onload = renderChart
-
