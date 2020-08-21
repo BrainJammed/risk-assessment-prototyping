@@ -5,13 +5,13 @@ function filterEventList (legends) {
 
   // first hide classes
   if (!legends[0]) {
-    $('.' + lines[0]).hide();
+    $('.' + lines[0]).slideUp();
   }
   if (!legends[1]) {
-    $('.' + lines[1]).hide();
+    $('.' + lines[1]).slideUp();
   }
   if (!legends[2]) {
-    $('.' + lines[3]).hide();
+    $('.' + lines[2]).slideUp();
   }
 
   // then show classes (in case a div has both classes)
@@ -22,13 +22,13 @@ function filterEventList (legends) {
     $('.' + lines[1]).show();
   }
   if (legends[2]) {
-    $('.' + lines[3]).show();
+    $('.' + lines[2]).show();
   }
 }
 
 function showOnlySeries(seriesToShow){
   $('.eventItem').show();
-  $('.eventItem').not('.' + lines[seriesToShow]).hide();
+  $('.eventItem').not('.' + lines[seriesToShow]).slideUp();
 
   $('.' + seriesToShow).show();
 }

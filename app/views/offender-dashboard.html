@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Offender risk score history
+Offender risk history
 {% endblock %}
 
 {% block content %}
@@ -11,15 +11,92 @@ Offender risk score history
         <div id="chart-area"></div>
     </div>
 </div>
-<div class="event-list">
-    <div class="rosha eventItem"><p>rosha</div>
-    <div class="ogres eventItem"><p>ogres</div>
-    <div class="ogres rosha eventItem"><p>ogres rosha</div>
-    <div class="eventItem"><p>Other event</div>
-    <div class="eventItem ogp"><p>ogp</div>
-    <div class="eventItem"><p>Other event</div>
-    <div class="eventItem ogp"><p>ogp</div>
-    <div class="eventItem"><p>Other event</div>
+<div class="timeline">
+    <ul>
+        <li class="rosha eventItem">
+            {{govukTag({
+            text: "ROSHA",
+            classes: "rosha--label"
+            })}}
+            <h2 class="timeline__title">Change of address</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+        <li class="ogres rosha eventItem">
+            {{govukTag({
+            text: "ROSHA",
+            classes: "rosha--label"
+            })}}{{govukTag({
+            text: "OGRES",
+            classes: "ogres--label"
+            })}}
+            <h2 class="timeline__title">Completion of intervention</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+        <li class="rosha eventItem">
+            {{govukTag({
+            text: "ROSHA",
+            classes: "rosha--label"
+            })}}
+            <h2 class="timeline__title">Objective created</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+        <li class="ogp eventItem">
+            {{govukTag({
+            text: "OGP",
+            classes: "ogp--label"
+            })}}
+            <h2 class="timeline__title">Objective created</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+        <li class="ogres eventItem">
+            {{govukTag({
+            text: "OGRES",
+            classes: "ogres--label"
+            })}}
+            <h2 class="timeline__title">Objective created</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+        <li class="eventItem">
+            <h2 class="timeline__title">Started alcohol awareness course</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+        <li class="ogp eventItem">
+            {{govukTag({
+            text: "OGP",
+            classes: "ogp--label"
+            })}}
+            <h2 class="timeline__title">Objective created</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+        <li class="eventItem">
+            <h2 class="timeline__title">Objective created</h2>
+            <p class="timeline__meta">
+                <time>20 August 2020 at 1:45 pm</time>
+                by Sarah Smith
+            </p>
+        </li>
+    </ul>
 </div>
 
 <script src="/public/javascripts/offender-chart.js"></script>
