@@ -33,6 +33,12 @@ function showOnlySeries(seriesToShow){
   $('.' + seriesToShow).show();
 }
 
+function scrollToAnchor(aid){
+  console.log('scrolling scrolling')
+  var aTag = $("a[id='"+ aid +"']");
+  $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+}
+
 function renderChart () {
   var container = document.getElementById('chart-area')
   var data = {
@@ -110,6 +116,8 @@ function renderChart () {
   chart.on('selectSeries', function (info) {
     console.log(info) // {chartType: String, legend: String, legendIndex: Number, index: number}
     console.log('clicked on data point:' + info.index)
+
+    scrollToAnchor('point_8');
   })
   chart.on('selectLegend', function (info) {
     console.log(info) // {chartType: String, legend: String, legendIndex: Number, index: number}
