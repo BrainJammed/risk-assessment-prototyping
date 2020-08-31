@@ -1,0 +1,245 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Long-term problems and needs
+{% endblock %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">Long-term problems and needs</h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/longterm" method="post" novalidate>
+
+                {{ govukRadios({
+                    idPrefix: "ltp-12months",
+                    name: "ltp-12months",
+                    fieldset: {
+                        legend: {
+                            text: "In the 12 months to now, has alcohol misuse been",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "ltp-12months-no",
+                            text: "No problem"
+                        },
+                        {
+                            value: "ltp-12months-some",
+                            text: "Something of a problem"
+                        },
+                        {
+                            value: "ltp-12months-sig",
+                            text: "A significant problem"
+                        }
+                    ]
+                }) }}
+
+                {{ govukRadios({
+                    idPrefix: "ltp-domvio",
+                    name: "ltp-domvio",
+                    fieldset: {
+                        legend: {
+                            text: "Are there problems of domestic violence or partner abuse?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "ltp-domvio-no",
+                            text: "No problems"
+                        },
+                        {
+                            value: "ltp-domvio-some",
+                            text: "Some problems"
+                        },
+                        {
+                            value: "ltp-domvio-sig",
+                            text: "Significant problems"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'ltp-binge' %}
+                {{ govukRadios({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "In the past 6 months, has binge drinking been",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-no",
+                            text: "No problem"
+                        },
+                        {
+                            value: qId + "-some",
+                            text: "Something of a problem"
+                        },
+                        {
+                            value: qId + "-sig",
+                            text: "A significant problem"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'ltp-freq-level' %}
+                {{ govukRadios({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Have there been problems with the frequency and level of alcohol misuse in the past?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-no",
+                            text: "No problems"
+                        },
+                        {
+                            value: qId + "-some",
+                            text: "Some problems"
+                        },
+                        {
+                            value: qId + "-sig",
+                            text: "Significant problems"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'ltp-violent' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Has there been violent behaviour related to alcohol misuse at any time?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: qId + "-no",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'ltp-motivation' %}
+                {{ govukRadios({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Is the individual's motivation to tackle alcohol misuse",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-no",
+                            text: "No problem"
+                        },
+                        {
+                            value: qId + "-some",
+                            text: "Something of a problem"
+                        },
+                        {
+                            value: qId + "-sig",
+                            text: "A significant problem"
+                        }
+                    ]
+                }) }}
+
+                <div class="govuk-form-group" style="margin-top:50px">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="more-detail">
+                            Alcohol misuse issues contributing to risks of offending and harm
+                        </label>
+                    </h1>
+                    <p>Give details</p>
+                    <div id="more-detail-hint" class="govuk-hint" style="margin-bottom:0">
+                        Include any positive factors
+                    </div>
+                    <textarea style="margin-bottom:0" class="govuk-textarea govuk-!-width-three-quarters"
+                              id="ltp-contrib-issues" name="ltp-contrib-issues" rows="4"
+                              aria-describedby="more-detail-hint"></textarea>
+                    <div id="more-detail-hint" class="govuk-hint">
+                        You have 200 characters remaining
+                    </div>
+                </div>
+
+                {% set qId = 'ltp-serious-harm' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Is alcolhol misuse linked to risk of serious harm, risks to the individual and other risks?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: qId + "-no",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'ltp-offending-link' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Is alcolhol misuse linked to offending behaviour?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: qId + "-no",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

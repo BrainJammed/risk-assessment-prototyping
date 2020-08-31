@@ -1,0 +1,44 @@
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    People affected
+{% endblock %}
+
+{% block content %}
+    <h1 class="govuk-heading-l">People affected</h1>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/people-affected" method="post" novalidate>
+                {{ govukCheckboxes({
+                    idPrefix: "people-affected",
+                    name: "people-affected",
+                    fieldset: {
+                        legend: {
+                            text: "Who is affected?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "individual",
+                            text: "The individual"
+                        },
+                        {
+                            value: "victim",
+                            text: "A victim"
+                        }
+                    ]
+                }) }}
+
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
