@@ -1,0 +1,155 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Effect on the individual - suicide risk
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
+    <h1 class="govuk-heading-l">Effect on the victim</h1>
+
+    {% set concernsHtml %}
+        {% set qId = 'eov-contact-social' %}
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: qId,
+            name: qId,
+            fieldset: {
+                legend: {
+                    text: "Does contact need to be made with social services or a lead professional?",
+                    isPageHeading: false,
+                    classes: "govuk-fieldset__legend--m"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+    {% endset %}
+
+    {% set knownChildHtml %}
+        {% set qId = 'eov-known-child' %}
+        {{ govukRadios({
+            classes: "govuk-radios--inline",
+            idPrefix: qId,
+            name: qId,
+            fieldset: {
+                legend: {
+                    text: "Known child?",
+                    isPageHeading: false,
+                    classes: "govuk-fieldset__legend--m"
+                }
+            },
+            items: [
+                {
+                    value: "yes",
+                    text: "Yes"
+                },
+                {
+                    value: "no",
+                    text: "No"
+                }
+            ]
+        }) }}
+
+    {% endset %}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/effect-victim" method="post" novalidate>
+                {% set qId = 'eov-who-affected' %}
+                {{ govukCheckboxes({
+                    idPrefix: "who-affected",
+                    name: "who-affected",
+                    fieldset: {
+                        legend: {
+                            text: "Who is affected?",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "adult",
+                            text: "An adult"
+                        },
+                        {
+                            value: "child",
+                            text: "A child",
+                            conditional: {
+                            html: knownChildHtml
+                        }
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'eov-contact' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Is the individual likely to live with, or have frequent contact with, a child who is on the child protection register or being looked after by the local authority?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: "no",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'eov-concerns' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Are there concerns in relation to children?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            conditional: {
+                            html: concernsHtml
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No"
+                        }
+                    ]
+                }) }}
+
+
+
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

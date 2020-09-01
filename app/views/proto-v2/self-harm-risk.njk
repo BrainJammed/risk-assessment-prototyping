@@ -9,19 +9,6 @@
     <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
     <h1 class="govuk-heading-l">Effect on the individual</h1>
 
-    {% set acctNumHtml %}
-        {{ govukInput({
-            classes: "govuk-input--width-20",
-            label: {
-                text: "Give book number",
-                classes: "govuk-label--s",
-                isPageHeading: false
-            },
-            id: "acct-book-number",
-            name: "acct-book-number"
-        }) }}
-    {% endset -%}
-
     {% set concernDetailHtml %}
         <div class="govuk-form-group">
             <label class="govuk-label govuk-label--s" for="concern-details">
@@ -47,8 +34,6 @@
             <form action="/self-harm-risk" method="post" novalidate>
 
                 <h2 class="govuk-heading-m">Risk of self-harm</h2>
-
-
 
                 {% set qId = 'eoi-self-harm-current-concerns' %}
                 {{ govukRadios({
