@@ -8,11 +8,99 @@
 {% endblock %}
 
 {% block content %}
+    <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
     <h1 class="govuk-heading-l">Effect on the individual</h1>
+
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <form action="/people-affected" method="post" novalidate>
-                <p>(current end of prototype - more soon!)</p>
+            <form action="/effect-indiv" method="post" novalidate>
+
+                {% set qId = 'eoi-self-harm' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Risk of suicide or self-harm",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: qId + "-no",
+                            text: "No"
+                        },
+                        {
+                            value: qId + "-dont-know",
+                            text: "Don't know"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'eoi-coping' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Coping in custody or a hostel",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: qId + "-no",
+                            text: "No"
+                        },
+                        {
+                            value: qId + "-dont-know",
+                            text: "Don't know"
+                        }
+                    ]
+                }) }}
+
+
+                {% set qId = 'eoi-inc-vulnerability' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Increased vulnerability",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-yes",
+                            text: "Yes"
+                        },
+                        {
+                            value: qId + "-no",
+                            text: "No"
+                        },
+                        {
+                            value: qId + "-dont-know",
+                            text: "Don't know"
+                        }
+                    ]
+                }) }}
+
+
 
                 {{ govukButton({
                     text: "Save and continue"

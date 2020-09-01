@@ -29,72 +29,75 @@
             ]
         }) }}
     {% endset -%}
-<form action="/subject" method="post" novalidate>
-    {{ govukRadios({
-        idPrefix: "subject",
-        name: "subject",
-        fieldset: {
-            legend: {
-                text: "Subject",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--l"
-            }
-        },
-        items: [
-            {
-                value: "accomodation",
-                text: "Accomodation"
-            },
-            {
-                value: "edu-train-employ",
-                text: "Education, training and employment"
-            },
-            {
-                value: "finances",
-                text: "Finances"
-            },
-            {
-                value: "relationships",
-                text: "Relationships"
-            },
-            {
-                value: "wellbeing",
-                text: "Emotional wellbeing"
-            },
-            {
-                value: "drugs",
-                text: "Drugs"
-            },
-            {
-                value: "alcohol",
-                text: "Alcohol",
-                conditional: {
-                html: alcoholHtml
-            }
-            },
-            {
-                value: "lifestyle",
-                text: "Lifestyle and associates"
-            },
-            {
-                value: "attitudes",
-                text: "Attitudes"
-            },
-            {
-                value: "thinking-skills",
-                text: "Thinking skills"
-            }
-            ,
-            {
-                value: "health",
-                text: "Health"
-            }
-        ]
-    }) }}
 
-    {{ govukButton({
-        text: "Save and continue"
-    }) }}
-</form>
+
+
+    <form action="/subject" method="post" novalidate>
+        {{ govukRadios({
+            idPrefix: "subject",
+            name: "subject",
+            fieldset: {
+                legend: {
+                    text: "Subject",
+                    isPageHeading: true,
+                    classes: "govuk-fieldset__legend--l"
+                }
+            },
+            items: [
+                {
+                    value: "accomodation",
+                    text: "Accomodation"
+                },
+                {
+                    value: "edu-train-employ",
+                    text: "Education, training and employment"
+                },
+                {
+                    value: "finances",
+                    text: "Finances"
+                },
+                {
+                    value: "relationships",
+                    text: "Relationships"
+                },
+                {
+                    value: "wellbeing",
+                    text: "Emotional wellbeing"
+                },
+                {
+                    value: "drugs",
+                    text: "Drugs"
+                },
+                {
+                    value: "alcohol",
+                    text: "Alcohol",
+                    conditional: {
+                    html: alcoholHtml
+                }
+                },
+                {
+                    value: "lifestyle",
+                    text: "Lifestyle and associates"
+                },
+                {
+                    value: "attitudes",
+                    text: "Attitudes"
+                },
+                {
+                    value: "thinking-skills",
+                    text: "Thinking skills"
+                }
+                ,
+                {
+                    value: "health",
+                    text: "Health"
+                }
+            ]
+        }) }}
+
+        {{ govukButton({
+            text: "Save and continue"
+        }) }}
+    </form>
 
 {% endblock %}

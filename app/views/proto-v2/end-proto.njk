@@ -1,0 +1,25 @@
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Effect on the individual
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-hint" style="margin-bottom:5px">Holding page</div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/people-affected" method="post" novalidate>
+                <p>(current end of prototype - more soon!)</p>
+
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -37,5 +37,23 @@ router.post('/people-affected', function (req, res) {
 router.get('/proto-v2/effect-indiv', function (req, res) {
   res.render('proto-v2/effect-indiv.njk')
 })
+router.post('/effect-indiv', function (req, res) {
+  res.redirect('proto-v2/suicide-risk')
+})
+
+router.get('/proto-v2/suicide-risk', function (req, res) {
+  res.render('proto-v2/suicide-risk.njk')
+})
+router.post('/suicide-risk', function (req, res) {
+  res.redirect('proto-v2/end-proto')
+})
+
+
+
+
+
+router.get('/proto-v2/end-proto', function (req, res) {
+  res.render('proto-v2/end-proto.njk')
+})
 
 module.exports = router
