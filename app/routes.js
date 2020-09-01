@@ -45,6 +45,13 @@ router.get('/proto-v2/suicide-risk', function (req, res) {
   res.render('proto-v2/suicide-risk.njk')
 })
 router.post('/suicide-risk', function (req, res) {
+  res.redirect('proto-v2/self-harm-risk')
+})
+
+router.get('/proto-v2/self-harm-risk', function (req, res) {
+  res.render('proto-v2/self-harm-risk.njk')
+})
+router.post('/self-harm-risk', function (req, res) {
   res.redirect('proto-v2/end-proto')
 })
 

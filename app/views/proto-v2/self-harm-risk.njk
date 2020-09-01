@@ -1,0 +1,192 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Effect on the individual - suicide risk
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
+    <h1 class="govuk-heading-l">Effect on the individual</h1>
+
+    {% set acctNumHtml %}
+        {{ govukInput({
+            classes: "govuk-input--width-20",
+            label: {
+                text: "Give book number",
+                classes: "govuk-label--s",
+                isPageHeading: false
+            },
+            id: "acct-book-number",
+            name: "acct-book-number"
+        }) }}
+    {% endset -%}
+
+    {% set concernDetailHtml %}
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="concern-details">
+                Give details
+            </label>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="concern-details" name="concern-details" rows="2"></textarea>
+            <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+        </div>
+    {% endset -%}
+
+    {% set pastConcernDetailHtml %}
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="concern-details">
+                Give details, including when the concerns arose
+            </label>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="past-concern-details" name="past-concern-details" rows="3"></textarea>
+            <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+        </div>
+    {% endset -%}
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/self-harm-risk" method="post" novalidate>
+
+                <h2 class="govuk-heading-m">Risk of self-harm</h2>
+
+
+
+                {% set qId = 'eoi-self-harm-current-concerns' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Current concerns about self-harm?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-yes",
+                            text: "Yes",
+                            conditional: {
+                            html: concernDetailHtml
+                        }
+                        },
+                        {
+                            value: qId + "-no",
+                            text: "No"
+                        },
+                        {
+                            value: qId + "-dont-know",
+                            text: "Don't know"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'eoi-self-harm-imminent' %}
+                {{ govukRadios({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "How imminent is the risk?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: qId + "-days",
+                            text: "Within days"
+                        },
+                        {
+                            value: qId + "-weeks",
+                            text: "Within weeks"
+                        },
+                        {
+                            value: qId + "-months",
+                            text: "Within months"
+                        },
+                        {
+                            value: qId + "-longer",
+                            text: "Longer"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'eoi-self-harm-likely' %}
+                {{ govukRadios({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "How likely is it?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "highly",
+                            text: "Highly likely"
+                        },
+                        {
+                            value: "quite",
+                            text: "Quite likely"
+                        },
+                        {
+                            value: "possible",
+                            text: "Possible, but not very likely"
+                        }
+                    ]
+                }) }}
+
+                <div class="govuk-heading-m">Mitigating actions</div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="mitigating-action">
+                        Give details
+                    </label>
+                    <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="mitigating-action" name="mitigating-action" rows="2"></textarea>
+                    <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+                </div>
+
+
+                {% set qId = 'eoi-self-harm-past-concerns' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Past concerns about self-harm?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            conditional: {
+                            html: pastConcernDetailHtml
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No"
+                        },
+                        {
+                            value: "dont-know",
+                            text: "Don't know"
+                        }
+                    ]
+                }) }}
+
+
+
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
