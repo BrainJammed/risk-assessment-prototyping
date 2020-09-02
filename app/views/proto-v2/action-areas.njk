@@ -1,10 +1,12 @@
-{% extends "layout.html" %}
+{% extends "layout_pf.html" %}
 
 {% block pageTitle %}
     Risk to a known child
 {% endblock %}
 
 {% block content %}
+    {% include "includes/offender-details.njk" %}
+
     <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
     <h1 class="govuk-heading-l">Areas for action</h1>
 
