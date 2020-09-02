@@ -1,0 +1,123 @@
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Risk management - Physical abuse of a known child
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-hint" style="margin-bottom:5px">Risk management</div>
+    <h1 class="govuk-heading-l">Physical abuse of a known child</h1>
+
+    {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+            {
+                text: "Who is at risk"
+            },
+            {
+                text: "Problem category"
+            },
+            {
+                text: "Timeframe"
+            },
+            {
+                text: "Imminence"
+            },
+            {
+                text: "Likelihood"
+            },
+            {
+                text: "Linked with"
+            }
+        ],
+        rows: [
+            [
+                {
+                    text: "Known child"
+                },
+                {
+                    text: "Significant"
+                },
+                {
+                    text: "Current"
+                },
+                {
+                    text: "Weeks"
+                },
+                {
+                    text: "High"
+                },
+                {
+                    text: "Violent behaviour related to alcohol"
+                }
+
+            ]
+        ]
+    }) }}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/pakc-interventions" method="post" novalidate>
+
+
+
+
+                <h2 class="govuk-heading-m">Interventions and treatment</h2>
+
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="more-detail">
+                            Action
+                        </label>
+                    </h1>
+
+                    <textarea style="margin-bottom:10px" class="govuk-textarea govuk-!-width-three-quarters"
+                              id="pakc-interv-action" name="pakc-interv-action" rows="4"
+                              aria-describedby="pakc-interv-action"></textarea>
+                    <div id="pakc-interv-action" class="govuk-hint">
+                        You have 200 characters remaining
+                    </div>
+                </div>
+
+
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="more-detail">
+                            Timescale
+                        </label>
+                    </h1>
+
+                    <textarea style="margin-bottom:10px" class="govuk-textarea govuk-!-width-three-quarters"
+                              id="pakc-interv-timescale" name="pakc-interv-timescale" rows="4"
+                              aria-describedby="pos-motivation-hint"></textarea>
+                    <div id="pos-motivation-hint" class="govuk-hint">
+                        You have 200 characters remaining
+                    </div>
+                </div>
+
+                <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="more-detail">
+                            Responsibilities
+                        </label>
+                    </h1>
+
+                    <textarea style="margin-bottom:10px" class="govuk-textarea govuk-!-width-three-quarters"
+                              id="pakc-interv-resp" name="pakc-interv-resp" rows="4"
+                              aria-describedby="pos-strengths-hint"></textarea>
+                    <div id="pos-strengths-hint" class="govuk-hint">
+                        You have 200 characters remaining
+                    </div>
+                </div>
+
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+                {{ govukButton({
+                    classes: "govuk-button--secondary margin-left__50",
+                    text: "Add another action"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -66,9 +66,39 @@ router.get('/proto-v2/risk-child', function (req, res) {
   res.render('proto-v2/risk-child.njk')
 })
 router.post('/risk-child', function (req, res) {
-  res.redirect('proto-v2/end-proto')
+  res.redirect('proto-v2/action-areas')
 })
 
+router.get('/proto-v2/action-areas', function (req, res) {
+  res.render('proto-v2/action-areas.njk')
+})
+
+router.get('/proto-v2/pakc-interventions', function (req, res) {
+  res.render('proto-v2/pakc-interventions.njk')
+})
+router.post('/pakc-interventions', function (req, res) {
+  res.redirect('proto-v2/pakc-monitoring')
+})
+
+router.get('/proto-v2/pakc-monitoring', function (req, res) {
+  res.render('proto-v2/pakc-monitoring.njk')
+})
+router.post('/pakc-monitoring', function (req, res) {
+  res.redirect('proto-v2/pakc-supervision')
+})
+router.get('/proto-v2/pakc-supervision', function (req, res) {
+  res.render('proto-v2/pakc-supervision.njk')
+})
+router.post('/pakc-supervision', function (req, res) {
+  res.redirect('proto-v2/pakc-safety')
+})
+
+router.get('/proto-v2/pakc-safety', function (req, res) {
+  res.render('proto-v2/pakc-safety.njk')
+})
+router.post('/pakc-safety', function (req, res) {
+  res.redirect('proto-v2/action-areas')
+})
 
 router.get('/proto-v2/end-proto', function (req, res) {
   res.render('proto-v2/end-proto.njk')
