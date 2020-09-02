@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding: 5px 0;
+  padding: 0;
 
   @include govuk-media-query($until: tablet) {
     justify-content: space-around;
@@ -59,7 +58,7 @@
   float: right;
   display: flex;
   justify-content: flex-end;
-  height: 30px;
+  height: 50px;
   background-color: #0040a1;
   padding-right: 20px;
 

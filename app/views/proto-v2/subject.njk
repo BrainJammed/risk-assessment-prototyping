@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    {% include "includes/offender-details.njk" %}
     {% set alcoholHtml %}
         {{ govukRadios({
             classes: "govuk-radios--inline",
