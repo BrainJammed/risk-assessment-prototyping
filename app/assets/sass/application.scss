@@ -127,3 +127,15 @@ $govuk-assets-path: '/govuk/assets/';
   margin-top: govuk-spacing(1);
   margin-bottom: 20px;
 }
+
+
+
+.checkboxes--inline .govuk-checkboxes__item {
+  margin-right: 10px;
+  float: left;
+  clear: none;
+}
+
+.govuk-form-group {
+  margin-bottom: 50px;
+}

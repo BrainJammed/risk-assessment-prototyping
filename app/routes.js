@@ -59,11 +59,15 @@ router.get('/proto-v2/effect-victim', function (req, res) {
   res.render('proto-v2/effect-victim.njk')
 })
 router.post('/effect-victim', function (req, res) {
-  res.redirect('proto-v2/end-proto')
+  res.redirect('proto-v2/risk-child')
 })
 
-
-
+router.get('/proto-v2/risk-child', function (req, res) {
+  res.render('proto-v2/risk-child.njk')
+})
+router.post('/risk-child', function (req, res) {
+  res.redirect('proto-v2/end-proto')
+})
 
 
 router.get('/proto-v2/end-proto', function (req, res) {

@@ -1,0 +1,558 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Risk to a known child
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
+    <h1 class="govuk-heading-l">Risk to a known child</h1>
+
+
+    {% set cprPhysHtml %}
+        {% set qId = 'rc-cpr-physical' %}
+        {{ govukCheckboxes({
+            classes: "checkboxes--inline",
+            idPrefix: qId,
+            name: qId,
+            items: [
+                {
+                    value: "current",
+                    text: "Current"
+                },
+                {
+                    value: "previous",
+                    text: "Previous"
+                }
+            ]
+        }) }}
+
+    {% endset %}
+
+
+    {% set reviewDetailHtml %}
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="review-details">
+                Give details
+            </label>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="review-details"
+                      name="review-details" rows="2"></textarea>
+            <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+        </div>
+
+    {% endset %}
+
+    {% set pastConcernDetailHtml %}
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="concern-details">
+                Give details, including when the concerns arose
+            </label>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="past-concern-details"
+                      name="past-concern-details" rows="3"></textarea>
+            <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+        </div>
+    {% endset -%}
+
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="/risk-child" method="post" novalidate>
+
+                {% set qId = 'rc-individual' %}
+                {{ govukCheckboxes({
+
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "The individual",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "presentsRisk",
+                            text: "Presents a risk to identifiable children"
+                        },
+                        {
+                            value: "situationRisk",
+                            text: "Is in a situation where identifiable children are at risk from others"
+                        }
+                    ]
+                }) }}
+
+
+                <label class="govuk-label govuk-label--m">
+                    Child at risk of serious harm
+                </label>
+
+                <div class="govuk-form-group govuk-!-margin-bottom-2">
+                    <label class="govuk-label govuk-hint" for="rc-name">
+                        Name
+                    </label>
+
+
+                    <input class="govuk-input govuk-input--width-20" id="rc-name" name="rc-name" type="text">
+                </div>
+
+
+
+
+
+                <div class="govuk-form-group govuk-!-margin-bottom-3">
+                    <label class="govuk-label govuk-hint" for="rc-age">
+                        Age
+                    </label>
+
+
+                    <input class="govuk-input govuk-input--width-3" id="rc-age" name="rc-age" type="text">
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="govuk-form-group govuk-!-margin-bottom-2">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="rc-dob-hint">
+
+
+                        <div id="rc-dob-hint" class="govuk-hint  govuk-!-margin-bottom-1">
+                            Date of birth
+                        </div>
+
+
+                        <div class="govuk-date-input" id="rc-dob">
+
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="rc-dob-day">
+                                        Day
+                                    </label>
+
+
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="rc-dob-day" name="rc-dob-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                                </div>
+                            </div>
+
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="rc-dob-month">
+                                        Month
+                                    </label>
+
+
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="rc-dob-month" name="rc-dob-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                                </div>
+                            </div>
+
+                            <div class="govuk-date-input__item">
+                                <div class="govuk-form-group">
+                                    <label class="govuk-label govuk-date-input__label" for="rc-dob-year">
+                                        Year
+                                    </label>
+
+
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="rc-dob-year" name="rc-dob-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+
+
+                </div>
+
+
+
+
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-hint" for="rc-gender">
+                        Gender
+                    </label>
+
+
+                    <input class="govuk-input govuk-input--width-10" id="rc-gender" name="rc-gender" type="text">
+                </div>
+{#                {% set qId = 'rc-name' %}#}
+{#                {{ govukInput({#}
+{#                    classes: "govuk-input--width-20",#}
+{#                    label: {#}
+{#                        text: "Name",#}
+{#                        classes: "govuk-hint",#}
+{#                        isPageHeading: false#}
+{#                    },#}
+{#                    id: qId,#}
+{#                    name: qId#}
+{#                }) }}#}
+
+{#                {% set qId = 'rc-age' %}#}
+{#                {{ govukInput({#}
+{#                    classes: "govuk-input--width-3",#}
+{#                    label: {#}
+{#                        text: "Age",#}
+{#                        classes: "govuk-hint",#}
+{#                        isPageHeading: false#}
+{#                    },#}
+{#                    id: qId,#}
+{#                    name: qId#}
+{#                }) }}#}
+
+{#                {% set qId = 'rc-dob' %}#}
+{#                {{ govukDateInput({#}
+{#                    id: qId,#}
+{#                    namePrefix: qId,#}
+{#                    fieldset: {#}
+{#                        legend: {#}
+{#                            text: "",#}
+{#                            isPageHeading: false,#}
+{#                            classes: "govuk-fieldset__legend--s"#}
+{#                        }#}
+{#                    },#}
+{#                    hint: {#}
+{#                        text: "Date of birth"#}
+{#                    }#}
+{#                }) }}#}
+
+{#                {% set qId = 'rc-gender' %}#}
+{#                {{ govukInput({#}
+{#                    classes: "govuk-input--width-10",#}
+{#                    label: {#}
+{#                        text: "Gender",#}
+{#                        classes: "govuk-hint",#}
+{#                        isPageHeading: false#}
+{#                    },#}
+{#                    id: qId,#}
+{#                    name: qId#}
+{#                }) }}#}
+
+
+                <label class="govuk-label govuk-label--m">
+                    Address (if disclosable)
+                </label>
+
+
+                <div class="govuk-form-group govuk-!-margin-bottom-2">
+                    <label class="govuk-label govuk-hint" for="rc-address1">
+                        Building and street
+                    </label>
+                    <input class="govuk-input govuk-input--width-20" id="rc-address1" name="rc-address1" type="text">
+                </div>
+
+
+                <div class="govuk-form-group govuk-!-margin-bottom-2">
+                    <input class="govuk-input govuk-input--width-20" id="rc-address2" name="rc-address2" type="text">
+                </div>
+
+
+                <div class="govuk-form-group govuk-!-margin-bottom-2">
+                    <label class="govuk-label govuk-hint" for="rc-address3">
+                        Town or city
+                    </label>
+                    <input class="govuk-input govuk-input--width-12" id="rc-address3" name="rc-address3" type="text">
+                </div>
+
+
+                <div class="govuk-form-group govuk-!-margin-bottom-2">
+                    <label class="govuk-label govuk-hint" for="rc-address4">
+                        County
+                    </label>
+                    <input class="govuk-input govuk-input--width-12" id="rc-address4" name="rc-address4" type="text">
+                </div>
+
+
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-hint" for="rc-address5">
+                        Postcode
+                    </label>
+                    <input class="govuk-input govuk-input--width-12" id="rc-address5" name="rc-address5" type="text">
+                </div>
+
+
+                {# <label class="govuk-label govuk-label--s"> #}
+                {# Address (if disclosable) #}
+                {# </label> #}
+                {# {% set qId = 'rc-address1' %} #}
+                {# {{ govukInput({ #}
+                {# classes: "govuk-input--width-20", #}
+                {# label: { #}
+                {# text: "Building and street", #}
+                {# classes: "govuk-hint", #}
+                {# isPageHeading: false #}
+                {# }, #}
+                {# id: qId, #}
+                {# name: qId #}
+                {# }) }} #}
+                {# {% set qId = 'rc-address2' %} #}
+                {# {{ govukInput({ #}
+                {# classes: "govuk-input--width-20", #}
+
+                {# id: qId, #}
+                {# name: qId #}
+                {# }) }} #}
+
+                {# {% set qId = 'rc-address3' %} #}
+                {# {{ govukInput({ #}
+                {# classes: "govuk-input--width-12", #}
+                {# label: { #}
+                {# text: "Town or city", #}
+                {# classes: "govuk-hint", #}
+                {# isPageHeading: false #}
+                {# }, #}
+                {# id: qId, #}
+                {# name: qId #}
+                {# }) }} #}
+
+                {# {% set qId = 'rc-address4' %} #}
+                {# {{ govukInput({ #}
+                {# classes: "govuk-input--width-12", #}
+                {# label: { #}
+                {# text: "County", #}
+                {# classes: "govuk-hint", #}
+                {# isPageHeading: false #}
+                {# }, #}
+                {# id: qId, #}
+                {# name: qId #}
+                {# }) }} #}
+                {# {% set qId = 'rc-address5' %} #}
+                {# {{ govukInput({ #}
+                {# classes: "govuk-input--width-12", #}
+                {# label: { #}
+                {# text: "Postcode", #}
+                {# classes: "govuk-hint", #}
+                {# isPageHeading: false #}
+                {# }, #}
+                {# id: qId, #}
+                {# name: qId #}
+                {# }) }} #}
+
+
+
+                {% set qId = 'rc-registered' %}
+                {{ govukCheckboxes({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Registered with social services",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "currently",
+                            text: "Currently"
+                        },
+                        {
+                            value: "previously",
+                            text: "Previously"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'rc-category-cpr' %}
+                {{ govukCheckboxes({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Category of child protection registration",
+                            isPageHeading: true,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "neglect",
+                            text: "Neglect",
+                            conditional: {
+                            html: cprPhysHtml
+                        }
+                        },
+                        {
+                            value: "physical",
+                            text: "Physical",
+                            conditional: {
+                            html: cprPhysHtml
+                        }
+                        },
+                        {
+                            value: "sexual",
+                            text: "Sexual",
+                            conditional: {
+                            html: cprPhysHtml
+                        }
+                        },
+                        {
+                            value: "emotional",
+                            text: "Emotional",
+                            conditional: {
+                            html: cprPhysHtml
+                        }
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'rc-reviews' %}
+                {{ govukRadios({
+                    classes: 'govuk-radios--inline',
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Have there been any child protection conferences or 'looked after' children reviews?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            conditional: {
+                            html: reviewDetailHtml
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No"
+                        },
+                        {
+                            value: "dont-know",
+                            text: "Don't know"
+                        }
+                    ]
+                }) }}
+
+
+                {% set qId = 'rc-aware-date' %}
+                {{ govukDateInput({
+                    id: qId,
+                    namePrefix: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Date assessor became aware of issues",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--s"
+                        }
+                    }
+                }) }}
+
+                {% set qId = 'rc-imminent' %}
+                {{ govukRadios({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "How imminent is the risk?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "days",
+                            text: "Within days"
+                        },
+                        {
+                            value: "weeks",
+                            text: "Within weeks"
+                        },
+                        {
+                            value: "months",
+                            text: "Within months"
+                        },
+                        {
+                            value: "longer",
+                            text: "Longer"
+                        }
+                    ]
+                }) }}
+
+                {% set qId = 'rc-likely' %}
+                {{ govukRadios({
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "How likely is it?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "highly",
+                            text: "Highly likely"
+                        },
+                        {
+                            value: "quite",
+                            text: "Quite likely"
+                        },
+                        {
+                            value: "possible",
+                            text: "Possible, but not very likely"
+                        }
+                    ]
+                }) }}
+
+
+                <div class="govuk-heading-m">Mitigating actions</div>
+                <div class="govuk-form-group">
+                    <label class="govuk-label govuk-label--s" for="rc-mitigating-action">
+                        Give details
+                    </label>
+                    <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0"
+                              id="rc-mitigating-action" name="rc-mitigating-action" rows="2"></textarea>
+                    <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+                </div>
+
+
+                {% set qId = 'rc-past-concerns' %}
+                {{ govukRadios({
+                    classes: "govuk-radios--inline",
+                    idPrefix: qId,
+                    name: qId,
+                    fieldset: {
+                        legend: {
+                            text: "Past concerns about suicide?",
+                            isPageHeading: false,
+                            classes: "govuk-fieldset__legend--m"
+                        }
+                    },
+                    items: [
+                        {
+                            value: "yes",
+                            text: "Yes",
+                            conditional: {
+                            html: pastConcernDetailHtml
+                        }
+                        },
+                        {
+                            value: "no",
+                            text: "No"
+                        },
+                        {
+                            value: "dont-know",
+                            text: "Don't know"
+                        }
+                    ]
+                }) }}
+
+
+                {{ govukButton({
+                    text: "Save and continue"
+                }) }}
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
