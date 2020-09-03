@@ -5,6 +5,10 @@
 {% endblock %}
 
 {% block content %}
+    {{ govukBackLink({
+        text: "Back",
+        href: "effect-victim"
+    }) }}
     {% include "includes/offender-details.njk" %}
     <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
     <h1 class="govuk-heading-l">Risk to a known child</h1>

@@ -5,13 +5,17 @@
 {% endblock %}
 
 {% block content %}
+    {{ govukBackLink({
+        text: "Back",
+        href: "action-areas"
+    }) }}
     {% include "includes/offender-details.njk" %}
     <div class="govuk-hint" style="margin-bottom:5px">Risk management</div>
     <h1 class="govuk-heading-l">Physical abuse of a known child</h1>
     {% include "includes/user-guide.njk" %}
 
     {{ govukTable({
-        firstCellIsHeader: true,
+        firstCellIsHeader: false,
         head: [
             {
                 text: "Who is at risk"

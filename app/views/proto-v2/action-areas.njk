@@ -5,20 +5,379 @@
 {% endblock %}
 
 {% block content %}
+    {{ govukBackLink({
+        text: "Back",
+        href: "risk-child"
+    }) }}
     {% include "includes/offender-details.njk" %}
 
     <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
     <h1 class="govuk-heading-l">Areas for action</h1>
     {% include "includes/user-guide.njk" %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+            {{ govukTable({
+                firstCellIsHeader: false,
+                classes: "risk-detail-table",
+                head: [
+                    {
+                        text: "Risk"
+                    },
+                    {
+                        text: "Who is at risk"
+                    },
+                    {
+                        text: "Problem category"
+                    },
+                    {
+                        text: "Timeframe"
+                    },
+                    {
+                        text: "Imminence"
+                    },
+                    {
+                        text: "Likelihood"
+                    },
+                    {
+                        text: "Details"
+                    },
+                    {
+                        text: "Actions"
+                    }
+                ],
+                rows: [
+                    [
+                        {
+                            text: "Alcohol misuse"
+                        },
+                        {
+                            text: "The individual"
+                        },
+                        {
+                            text: "Some"
+                        },
+                        {
+                            text: "Current"
+                        },
+                        {
+                            text: "Weeks"
+                        },
+                        {
+                            text: "High"
+                        },
+                        {
+                            text: "View details"
+                        },
+                        {
+                            html: "<a href='#'>Add or edit</a>"
+                        }
 
-    <p>Page dev in progress</p>
+                    ],
+                    [
+                        {
+                            text: "Binge drinking"
+                        },
+                        {
+                            text: "The individual"
+                        },
+                        {
+                            text: "Significant"
+                        },
+                        {
+                            text: "Past 6 months"
+                        },
+                        {
+                            text: "Months"
+                        },
+                        {
+                            text: "High"
+                        },
+                        {
+                            text: "View details"
+                        },
+                        {
+                            html: "<a href='#'>Add or edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Domestic violence and partner abuse"
+                        },
+                        {
+                            text: "Known adult"
+                        },
+                        {
+                            text: "Some"
+                        },
+                        {
+                            text: "Current"
+                        },
+                        {
+                            text: "Months"
+                        },
+                        {
+                            text: "Moderate"
+                        },
+                        {
+                            text: "View details"
+                        },
+                        {
+                            html: "<a href='#'>Add or edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Suicide"
+                        },
+                        {
+                            text: "The individual"
+                        },
+                        {
+                            text: "Significant"
+                        },
+                        {
+                            text: "Current"
+                        },
+                        {
+                            text: "Weeks"
+                        },
+                        {
+                            text: "High"
+                        },
+                        {
+                            text: "View details"
+                        },
+                        {
+                            html: "<a href='#'>Add or edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Self-harm"
+                        },
+                        {
+                            text: "The individual"
+                        },
+                        {
+                            text: "Significant"
+                        },
+                        {
+                            text: "Current"
+                        },
+                        {
+                            text: "Weeks"
+                        },
+                        {
+                            text: "High"
+                        },
+                        {
+                            text: "View details"
+                        },
+                        {
+                            html: "<a href='#'>Add or edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Physical abuse to a known child"
+                        },
+                        {
+                            text: "Known child"
+                        },
+                        {
+                            text: "Significant"
+                        },
+                        {
+                            text: "Current"
+                        },
+                        {
+                            text: "Weeks"
+                        },
+                        {
+                            text: "High"
+                        },
+                        {
+                            text: "View details"
+                        },
+                        {
+                            html: "<a href='pakc-interventions'>Add or edit</a>"
+                        }
+                    ]
+                ]
+            }) }}
 
-    <p><a href="pakc-interventions">Click here for 'Physical abuse of a known child' risk management pages</a></p>
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m">Other information</h2>
+            {{ govukTable({
+                classes: 'risk-detail-table risk-detail-table-info',
+                firstCellIsHeader: false,
+                head: [
+                    {
+                        text: "Violence"
+                    },
+                    {
+                        text: ""
+                    }
+                ],
+                rows: [
+                    [
+                        {
+                            text: "Violent behaviour related to alcohol"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ]
+                ]
+            }) }}
 
 
-    {{ govukButton({
-        text: "Save and continue"
-    }) }}
+            {{ govukTable({
+                classes: 'risk-detail-table risk-detail-table-info',
+                firstCellIsHeader: false,
+                head: [
+                    {
+                        text: "Children"
+                    },
+                    {
+                        text: ""
+                    }
+                ],
+                rows: [
+                    [
+                        {
+                            text: "Considered a continuing risk to children"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Referred as critical public protection case"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            html: "Required to register under Sex Offenders Act - <b>has not registered</b>"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Disqualified from working with children"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Child is currently registered with social services"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Child protection conference or 'looked after' reviews have been carried out"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Individual is likely to live with, or has frequent contact with a child on the child protection register or being looked after by a local authority"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Contact needs to be made with social services or a lead professional"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Past concerns about risk to a known child"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ]
+                ]
+            }) }}
 
+
+            {{ govukTable({
+                classes: 'risk-detail-table risk-detail-table-info',
+                firstCellIsHeader: false,
+                head: [
+                    {
+                        text: "Suicide or self-harm"
+                    },
+                    {
+                        text: ""
+                    }
+                ],
+                rows: [
+                    [
+                        {
+                            text: "Past concerns about suicide"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ],
+                    [
+                        {
+                            text: "Past concerns about self-harm"
+                        },
+                        {
+                            html: "<a href='#'>Edit</a>"
+                        }
+                    ]
+                ]
+            }) }}
+        </div>
+        <div class="govuk-grid-column-one-half">
+            <h2 class="govuk-heading-m">Positives</h2>
+
+            <h3 class="govuk-heading-s">Protective factors</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut vehicula mauris. Nullam a leo a diam ullamcorper vehicula. Mauris ultricies lacinia sem eu porttitor. Fusce ligula felis, aliquam non pretium quis, maximus sit amet augue. Pellentesque et semper lacus, sit amet accumsan lorem.</p>
+
+
+            <h3 class="govuk-heading-s">Motivation</h3>
+            <p>Nullam a leo a diam ullamcorper vehicula. Mauris ultricies lacinia sem eu porttitor. Fusce ligula felis, aliquam non pretium quis, maximus sit amet augue. Pellentesque et semper lacus, sit amet accumsan lorem.</p>
+
+
+
+            <h3 class="govuk-heading-s">Strengths</h3>
+            <p>Nam ut vehicula mauris. Nullam a leo a diam ullamcorper vehicula. Mauris ultricies lacinia sem eu porttitor. Fusce ligula felis, aliquam non pretium quis, maximus sit amet augue. Pellentesque et semper lacus, sit amet accumsan lorem.</p>
+
+
+
+            <h3 class="govuk-heading-s">Completed interventions</h3>
+            <p>Lorem ipsum dolor ultricies lacinia sem eu porttitor. Fusce ligula felis, aliquam non pretium quis, maximus sit amet augue. Pellentesque et semper lacus, sit amet accumsan lorem.</p>
+
+
+        </div>
+    </div>
+    
 
 {% endblock %}

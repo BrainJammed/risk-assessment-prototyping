@@ -173,5 +173,14 @@ table .offender-details {
 }
 
 .govuk-main-wrapper, .govuk-main-wrapper--auto-spacing:first-child {
-  padding-top: 20px;
+  padding-top: 0;
+}
+
+.risk-detail-table {
+  font-size: medium;
+}
+.risk-detail-table-info {
+  tr td:last-child {
+    text-align: right;
+  }
 }
