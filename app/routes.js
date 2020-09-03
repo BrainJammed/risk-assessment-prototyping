@@ -7,7 +7,13 @@ router.get('/dashboard', function (req, res) {
   res.render('offender-dashboard', { message: 'Hello world' })
 })
 
-// prototype v2 pages
+// prototype v2 pagesc
+router.get('/proto-v2/', function (req, res) {
+  res.redirect('/proto-v2/subject')
+})
+router.get('/proto-v2', function (req, res) {
+  res.redirect('/proto-v2/subject')
+})
 router.get('/proto-v2/subject', function (req, res) {
   res.render('proto-v2/subject.njk')
 })

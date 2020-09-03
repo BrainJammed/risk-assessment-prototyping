@@ -5,6 +5,33 @@
 {% endblock %}
 
 {% block content %}
+    {% set moreDetailHtml %}
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="review-details">
+                Give details
+            </label>
+            <div class="govuk-hint" style="margin-top:6px">Describe level and frequency of alcohol consumption at
+                present
+            </div>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="misuse-details"
+                      name="review-details" rows="4"></textarea>
+            <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+        </div>
+
+    {% endset %}
+    {% set moreDetail2Html %}
+        <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--s" for="review-details">
+                Give details
+            </label>
+            <div class="govuk-hint" style="margin-top:6px">Describe level and frequency of alcohol consumption</div>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="abuse-details"
+                      name="review-details" rows="4"></textarea>
+            <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
+        </div>
+
+    {% endset %}
+
     {% include "includes/offender-details.njk" %}
     <div class="govuk-hint" style="margin-bottom:5px">Alcohol misuse</div>
     <h1 class="govuk-heading-l">Long-term problems and needs</h1>
@@ -29,11 +56,17 @@
                         },
                         {
                             value: "ltp-12months-some",
-                            text: "Something of a problem"
+                            text: "Something of a problem",
+                            conditional: {
+                            html: moreDetailHtml
+                        }
                         },
                         {
                             value: "ltp-12months-sig",
-                            text: "A significant problem"
+                            text: "A significant problem",
+                            conditional: {
+                            html: moreDetailHtml
+                        }
                         }
                     ]
                 }) }}
@@ -55,11 +88,17 @@
                         },
                         {
                             value: "ltp-domvio-some",
-                            text: "Some problems"
+                            text: "Some problems",
+                            conditional: {
+                            html: moreDetailHtml
+                        }
                         },
                         {
                             value: "ltp-domvio-sig",
-                            text: "Significant problems"
+                            text: "Significant problems",
+                            conditional: {
+                            html: moreDetailHtml
+                        }
                         }
                     ]
                 }) }}
@@ -82,11 +121,17 @@
                         },
                         {
                             value: qId + "-some",
-                            text: "Something of a problem"
+                            text: "Something of a problem",
+                            conditional: {
+                            html: moreDetail2Html
+                        }
                         },
                         {
                             value: qId + "-sig",
-                            text: "A significant problem"
+                            text: "A significant problem",
+                            conditional: {
+                            html: moreDetail2Html
+                        }
                         }
                     ]
                 }) }}
@@ -109,11 +154,17 @@
                         },
                         {
                             value: qId + "-some",
-                            text: "Some problems"
+                            text: "Some problems",
+                            conditional: {
+                            html: moreDetail2Html
+                        }
                         },
                         {
                             value: qId + "-sig",
-                            text: "Significant problems"
+                            text: "Significant problems",
+                            conditional: {
+                            html: moreDetail2Html
+                        }
                         }
                     ]
                 }) }}
@@ -160,11 +211,17 @@
                         },
                         {
                             value: qId + "-some",
-                            text: "Something of a problem"
+                            text: "Something of a problem",
+                            conditional: {
+                            html: moreDetail2Html
+                        }
                         },
                         {
                             value: qId + "-sig",
-                            text: "A significant problem"
+                            text: "A significant problem",
+                            conditional: {
+                            html: moreDetail2Html
+                        }
                         }
                     ]
                 }) }}
