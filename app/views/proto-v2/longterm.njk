@@ -57,19 +57,22 @@
                     },
                     items: [
                         {
-                            value: "ltp-12months-no",
-                            text: "No problem"
+                            value: "no",
+                            text: "No problem",
+                            checked: checked("ltp-12months", "no")
                         },
                         {
-                            value: "ltp-12months-some",
+                            value: "some",
                             text: "Something of a problem",
+                            checked: checked("ltp-12months", "some"),
                             conditional: {
                             html: moreDetailHtml
                         }
                         },
                         {
-                            value: "ltp-12months-sig",
+                            value: "significant",
                             text: "A significant problem",
+                            checked: checked("ltp-12months", "no"),
                             conditional: {
                             html: moreDetailHtml
                         }
@@ -89,19 +92,22 @@
                     },
                     items: [
                         {
-                            value: "ltp-domvio-no",
-                            text: "No problems"
+                            value: "no",
+                            text: "No problems",
+                            checked: checked("ltp-domvio", "no")
                         },
                         {
-                            value: "ltp-domvio-some",
+                            value: "some",
                             text: "Some problems",
+                            checked: checked("ltp-domvio", "some"),
                             conditional: {
                             html: moreDetailHtml
                         }
                         },
                         {
-                            value: "ltp-domvio-sig",
+                            value: "significant",
                             text: "Significant problems",
+                            checked: checked("ltp-domvio", "significant"),
                             conditional: {
                             html: moreDetailHtml
                         }
@@ -122,19 +128,22 @@
                     },
                     items: [
                         {
-                            value: qId + "-no",
-                            text: "No problem"
+                            value: "no",
+                            text: "No problem",
+                            checked: checked("ltp-binge", "no")
                         },
                         {
-                            value: qId + "-some",
+                            value: "some",
                             text: "Something of a problem",
+                            checked: checked("ltp-binge", "some"),
                             conditional: {
                             html: moreDetail2Html
                         }
                         },
                         {
-                            value: qId + "-sig",
+                            value: "sig",
                             text: "A significant problem",
+                            checked: checked("ltp-binge", "sig"),
                             conditional: {
                             html: moreDetail2Html
                         }
@@ -155,19 +164,22 @@
                     },
                     items: [
                         {
-                            value: qId + "-no",
-                            text: "No problems"
+                            value: "no",
+                            text: "No problems",
+                            checked: checked("ltp-freq-level", "no")
                         },
                         {
-                            value: qId + "-some",
+                            value: "some",
                             text: "Some problems",
+                            checked: checked("ltp-freq-level", "some"),
                             conditional: {
                             html: moreDetail2Html
                         }
                         },
                         {
-                            value: qId + "-sig",
+                            value: "significant",
                             text: "Significant problems",
+                            checked: checked("ltp-freq-level", "significant"),
                             conditional: {
                             html: moreDetail2Html
                         }
@@ -189,8 +201,9 @@
                     },
                     items: [
                         {
-                            value: qId + "-yes",
-                            text: "Yes"
+                            value: "yes",
+                            text: "Yes",
+                            checked: checked(qId, "yes")
                         },
                         {
                             value: qId + "-no",
@@ -212,19 +225,22 @@
                     },
                     items: [
                         {
-                            value: qId + "-no",
-                            text: "No problem"
+                            value: "no",
+                            text: "No problem",
+                            checked: checked(qId, "no")
                         },
                         {
-                            value: qId + "-some",
+                            value: "some",
                             text: "Something of a problem",
+                            checked: checked(qId, "some"),
                             conditional: {
                             html: moreDetail2Html
                         }
                         },
                         {
-                            value: qId + "-sig",
+                            value: "significant",
                             text: "A significant problem",
+                            checked: checked(qId, "significant"),
                             conditional: {
                             html: moreDetail2Html
                         }
@@ -243,7 +259,7 @@
                     </div>
                     <textarea style="margin-bottom:0" class="govuk-textarea govuk-!-width-three-quarters"
                               id="ltp-contrib-issues" name="ltp-contrib-issues" rows="4"
-                              aria-describedby="more-detail-hint"></textarea>
+                              aria-describedby="more-detail-hint">{{ data['ltp-contrib-issues'] }}</textarea>
                     <div id="more-detail-hint" class="govuk-hint">
                         You have 200 characters remaining
                     </div>
@@ -263,12 +279,14 @@
                     },
                     items: [
                         {
-                            value: qId + "-yes",
-                            text: "Yes"
+                            value: "yes",
+                            text: "Yes",
+                            checked: checked(qId, "yes")
                         },
                         {
-                            value: qId + "-no",
-                            text: "No"
+                            value: "no",
+                            text: "No",
+                            checked: checked(qId, "no")
                         }
                     ]
                 }) }}
@@ -287,12 +305,14 @@
                     },
                     items: [
                         {
-                            value: qId + "-yes",
-                            text: "Yes"
+                            value: "yes",
+                            text: "Yes",
+                            checked: checked(qId, "yes")
                         },
                         {
-                            value: qId + "-no",
-                            text: "No"
+                            value: "no",
+                            text: "No",
+                            checked: checked(qId, "no")
                         }
                     ]
                 }) }}
