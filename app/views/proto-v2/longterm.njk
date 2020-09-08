@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    {% set moreDetailHtml %}
+
+    {% macro genDetailHtml(elementId) %}
         <div class="govuk-form-group">
             <label class="govuk-label govuk-label--s" for="review-details">
                 Give details
@@ -13,24 +14,25 @@
             <div class="govuk-hint" style="margin-top:6px">Describe level and frequency of alcohol consumption at
                 present
             </div>
-            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="misuse-details"
-                      name="review-details" rows="4"></textarea>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="{{ elementId }}"
+                      name="{{ elementId }}" rows="4">{{ data[elementId] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
 
-    {% endset %}
-    {% set moreDetail2Html %}
+    {% endmacro %}
+
+    {% macro moreDetail2Html(elementId) %}
         <div class="govuk-form-group">
             <label class="govuk-label govuk-label--s" for="review-details">
                 Give details
             </label>
             <div class="govuk-hint" style="margin-top:6px">Describe level and frequency of alcohol consumption</div>
-            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="abuse-details"
-                      name="review-details" rows="4"></textarea>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="{{ elementId }}"
+                      name="{{ elementId }}" rows="4">{{ data[elementId] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
 
-    {% endset %}
+    {% endmacro %}
     {{ govukBackLink({
         text: "Back",
         href: "subject"
@@ -41,6 +43,7 @@
     {% from "govuk/components/details/macro.njk" import govukDetails %}
 
     {% include "includes/user-guide.njk" %}
+
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <form action="/longterm" method="post" novalidate>
@@ -66,7 +69,7 @@
                             text: "Something of a problem",
                             checked: checked("ltp-12months", "some"),
                             conditional: {
-                            html: moreDetailHtml
+                            html: genDetailHtml('ltp-12months-some')
                         }
                         },
                         {
@@ -74,7 +77,7 @@
                             text: "A significant problem",
                             checked: checked("ltp-12months", "no"),
                             conditional: {
-                            html: moreDetailHtml
+                            html: genDetailHtml('ltp-12months-significant')
                         }
                         }
                     ]
@@ -101,7 +104,7 @@
                             text: "Some problems",
                             checked: checked("ltp-domvio", "some"),
                             conditional: {
-                            html: moreDetailHtml
+                            html: genDetailHtml('ltp-domvio-some')
                         }
                         },
                         {
@@ -109,7 +112,7 @@
                             text: "Significant problems",
                             checked: checked("ltp-domvio", "significant"),
                             conditional: {
-                            html: moreDetailHtml
+                            html: genDetailHtml('ltp-domvio-significant')
                         }
                         }
                     ]
@@ -137,7 +140,7 @@
                             text: "Something of a problem",
                             checked: checked("ltp-binge", "some"),
                             conditional: {
-                            html: moreDetail2Html
+                            html: moreDetail2Html('ltp-binge-some')
                         }
                         },
                         {
@@ -145,7 +148,7 @@
                             text: "A significant problem",
                             checked: checked("ltp-binge", "sig"),
                             conditional: {
-                            html: moreDetail2Html
+                            html: moreDetail2Html('ltp-binge-sig')
                         }
                         }
                     ]
@@ -173,7 +176,7 @@
                             text: "Some problems",
                             checked: checked("ltp-freq-level", "some"),
                             conditional: {
-                            html: moreDetail2Html
+                            html: moreDetail2Html('ltp-freq-level-some')
                         }
                         },
                         {
@@ -181,7 +184,7 @@
                             text: "Significant problems",
                             checked: checked("ltp-freq-level", "significant"),
                             conditional: {
-                            html: moreDetail2Html
+                            html: moreDetail2Html('ltp-freq-level-significant')
                         }
                         }
                     ]
@@ -234,7 +237,7 @@
                             text: "Something of a problem",
                             checked: checked(qId, "some"),
                             conditional: {
-                            html: moreDetail2Html
+                            html: moreDetail2Html('ltp-motivation-some')
                         }
                         },
                         {
@@ -242,7 +245,7 @@
                             text: "A significant problem",
                             checked: checked(qId, "significant"),
                             conditional: {
-                            html: moreDetail2Html
+                            html: moreDetail2Html('ltp-motivation-significant')
                         }
                         }
                     ]

@@ -18,6 +18,7 @@
     {% set acctNumHtml %}
         {{ govukInput({
             classes: "govuk-input--width-20",
+            value: data['acct-book-number'],
             label: {
                 text: "Give book number",
                 classes: "govuk-label--s",
@@ -33,7 +34,7 @@
             <label class="govuk-label govuk-label--s" for="concern-details">
                 Give details
             </label>
-            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="concern-details" name="concern-details" rows="2"></textarea>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="concern-details" name="concern-details" rows="2">{{ data['concern-details'] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
     {% endset -%}
@@ -43,7 +44,7 @@
             <label class="govuk-label govuk-label--s" for="concern-details">
                 Give details, including when the concerns arose
             </label>
-            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="past-concern-details" name="past-concern-details" rows="3"></textarea>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="past-concern-details" name="past-concern-details" rows="3">{{ data['past-concern-details'] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
     {% endset -%}

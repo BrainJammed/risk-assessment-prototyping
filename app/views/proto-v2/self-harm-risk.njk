@@ -17,10 +17,10 @@
 
     {% set concernDetailHtml %}
         <div class="govuk-form-group">
-            <label class="govuk-label govuk-label--s" for="concern-details">
+            <label class="govuk-label govuk-label--s" for="sh-concern-details">
                 Give details
             </label>
-            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="concern-details" name="concern-details" rows="2"></textarea>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="sh-concern-details" name="sh-concern-details" rows="2">{{ data['sh-concern-details'] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
     {% endset -%}
@@ -30,7 +30,7 @@
             <label class="govuk-label govuk-label--s" for="concern-details">
                 Give details, including when the concerns arose
             </label>
-            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="past-concern-details" name="past-concern-details" rows="3"></textarea>
+            <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="sh-past-concern-details" name="sh-past-concern-details" rows="3">{{ data['sh-past-concern-details'] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
     {% endset -%}

@@ -14,8 +14,8 @@
     <h1 class="govuk-heading-l">Risk to a known child</h1>
     {% include "includes/user-guide.njk" %}
 
-    {% set cprPhysHtml %}
-        {% set qId = 'rc-cpr-physical' %}
+    {% set cprPhysHtml1 %}
+        {% set qId = 'rc-cpr-physical1' %}
         {{ govukCheckboxes({
             classes: "checkboxes--inline",
             idPrefix: qId,
@@ -33,7 +33,66 @@
                 }
             ]
         }) }}
-
+    {% endset %}
+    {% set cprPhysHtml2 %}
+        {% set qId = 'rc-cpr-physical2' %}
+        {{ govukCheckboxes({
+            classes: "checkboxes--inline",
+            idPrefix: qId,
+            name: qId,
+            items: [
+                {
+                    value: "current",
+                    text: "Current",
+                    checked: checked(qId, "current")
+                },
+                {
+                    value: "previous",
+                    text: "Previous",
+                    checked: checked(qId, "previous")
+                }
+            ]
+        }) }}
+    {% endset %}
+    {% set cprPhysHtml3 %}
+        {% set qId = 'rc-cpr-physical3' %}
+        {{ govukCheckboxes({
+            classes: "checkboxes--inline",
+            idPrefix: qId,
+            name: qId,
+            items: [
+                {
+                    value: "current",
+                    text: "Current",
+                    checked: checked(qId, "current")
+                },
+                {
+                    value: "previous",
+                    text: "Previous",
+                    checked: checked(qId, "previous")
+                }
+            ]
+        }) }}
+    {% endset %}
+    {% set cprPhysHtml4 %}
+        {% set qId = 'rc-cpr-physical4' %}
+        {{ govukCheckboxes({
+            classes: "checkboxes--inline",
+            idPrefix: qId,
+            name: qId,
+            items: [
+                {
+                    value: "current",
+                    text: "Current",
+                    checked: checked(qId, "current")
+                },
+                {
+                    value: "previous",
+                    text: "Previous",
+                    checked: checked(qId, "previous")
+                }
+            ]
+        }) }}
     {% endset %}
 
 
@@ -363,7 +422,7 @@
                             text: "Neglect",
                             checked: checked(qId, "neglect"),
                             conditional: {
-                            html: cprPhysHtml
+                            html: cprPhysHtml1
                         }
                         },
                         {
@@ -371,7 +430,7 @@
                             text: "Physical",
                             checked: checked(qId, "physical"),
                             conditional: {
-                            html: cprPhysHtml
+                            html: cprPhysHtml2
                         }
                         },
                         {
@@ -379,7 +438,7 @@
                             text: "Sexual",
                             checked: checked(qId, "sexual"),
                             conditional: {
-                            html: cprPhysHtml
+                            html: cprPhysHtml3
                         }
                         },
                         {
@@ -387,7 +446,7 @@
                             text: "Emotional",
                             checked: checked(qId, "emotional"),
                             conditional: {
-                            html: cprPhysHtml
+                            html: cprPhysHtml4
                         }
                         }
                     ]
