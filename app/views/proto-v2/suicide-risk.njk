@@ -73,13 +73,15 @@
                         {
                             value: "yes",
                             text: "Yes",
+                            checked: checked(qId, "yes"),
                             conditional: {
                                 html: acctNumHtml
                             }
                         },
                         {
                             value: "no",
-                            text: "No"
+                            text: "No",
+                            checked: checked(qId, "no")
                         }
                     ]
                 }) }}
@@ -98,19 +100,22 @@
                     },
                     items: [
                         {
-                            value: qId + "-yes",
+                            value: "yes",
                             text: "Yes",
+                            checked: checked(qId, "yes"),
                             conditional: {
                             html: concernDetailHtml
                         }
                         },
                         {
-                            value: qId + "-no",
+                            value: "no",
+                            checked: checked(qId, "no"),
                             text: "No"
                         },
                         {
-                            value: qId + "-dont-know",
-                            text: "Don't know"
+                            value: "dont-know",
+                            text: "Don't know",
+                            checked: checked(qId, "dont-know")
                         }
                     ]
                 }) }}
@@ -128,20 +133,24 @@
                     },
                     items: [
                         {
-                            value: qId + "-days",
-                            text: "Within days"
+                            value: "days",
+                            text: "Within days",
+                            checked: checked(qId, "days")
                         },
                         {
-                            value: qId + "-weeks",
-                            text: "Within weeks"
+                            value: "weeks",
+                            text: "Within weeks",
+                            checked: checked(qId, "weeks")
                         },
                         {
-                            value: qId + "-months",
-                            text: "Within months"
+                            value: "months",
+                            text: "Within months",
+                            checked: checked(qId, "months")
                         },
                         {
-                            value: qId + "-longer",
-                            text: "Longer"
+                            value: "longer",
+                            text: "Longer",
+                            checked: checked(qId, "longer")
                         }
                     ]
                 }) }}
@@ -160,15 +169,18 @@
                     items: [
                         {
                             value: "highly",
-                            text: "Highly likely"
+                            text: "Highly likely",
+                            checked: checked(qId, "highly")
                         },
                         {
                             value: "quite",
-                            text: "Quite likely"
+                            text: "Quite likely",
+                            checked: checked(qId, "quite")
                         },
                         {
                             value: "possible",
-                            text: "Possible, but not very likely"
+                            text: "Possible, but not very likely",
+                            checked: checked(qId, "possible")
                         }
                     ]
                 }) }}
@@ -178,7 +190,7 @@
                     <label class="govuk-label govuk-label--s" for="mitigating-action">
                         Give details
                     </label>
-                    <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="mitigating-action" name="mitigating-action" rows="2"></textarea>
+                    <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="sr-mitigating-action" name="sr-mitigating-action" rows="2">{{ data['sr-mitigating-action'] }}</textarea>
                     <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
                 </div>
 
@@ -199,17 +211,20 @@
                         {
                             value: "yes",
                             text: "Yes",
+                            checked: checked(qId, "yes"),
                             conditional: {
                             html: pastConcernDetailHtml
                         }
                         },
                         {
                             value: "no",
-                            text: "No"
+                            text: "No",
+                            checked: checked(qId, "no")
                         },
                         {
                             value: "dont-know",
-                            text: "Don't know"
+                            text: "Don't know",
+                            checked: checked(qId, "dont-know")
                         }
                     ]
                 }) }}

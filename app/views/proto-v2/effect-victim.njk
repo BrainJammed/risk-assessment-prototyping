@@ -30,11 +30,13 @@
             items: [
                 {
                     value: "yes",
-                    text: "Yes"
+                    text: "Yes",
+                    checked: checked(qId, "yes")
                 },
                 {
                     value: "no",
-                    text: "No"
+                    text: "No",
+                    checked: checked(qId, "no")
                 }
             ]
         }) }}
@@ -57,11 +59,13 @@
             items: [
                 {
                     value: "yes",
-                    text: "Yes"
+                    text: "Yes",
+                    checked: checked(qId, "yes")
                 },
                 {
                     value: "no",
-                    text: "No"
+                    text: "No",
+                    checked: checked(qId, "no")
                 }
             ]
         }) }}
@@ -85,11 +89,13 @@
                     items: [
                         {
                             value: "adult",
-                            text: "An adult"
+                            text: "An adult",
+                            checked: checked("who-affected", "adult")
                         },
                         {
                             value: "child",
                             text: "A child",
+                            checked: checked("who-affected", "child"),
                             conditional: {
                             html: knownChildHtml
                         }
@@ -112,11 +118,13 @@
                     items: [
                         {
                             value: "yes",
-                            text: "Yes"
+                            text: "Yes",
+                            checked: checked(qId, "yes")
                         },
                         {
                             value: "no",
-                            text: "No"
+                            text: "No",
+                            checked: checked(qId, "no")
                         }
                     ]
                 }) }}
@@ -136,13 +144,15 @@
                         {
                             value: "yes",
                             text: "Yes",
+                            checked: checked(qId, "yes"),
                             conditional: {
                             html: concernsHtml
                         }
                         },
                         {
                             value: "no",
-                            text: "No"
+                            text: "No",
+                            checked: checked(qId, "no")
                         }
                     ]
                 }) }}

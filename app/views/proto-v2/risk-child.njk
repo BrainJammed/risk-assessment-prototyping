@@ -23,11 +23,13 @@
             items: [
                 {
                     value: "current",
-                    text: "Current"
+                    text: "Current",
+                    checked: checked(qId, "current")
                 },
                 {
                     value: "previous",
-                    text: "Previous"
+                    text: "Previous",
+                    checked: checked(qId, "previous")
                 }
             ]
         }) }}
@@ -37,11 +39,11 @@
 
     {% set reviewDetailHtml %}
         <div class="govuk-form-group">
-            <label class="govuk-label govuk-label--s" for="review-details">
+            <label class="govuk-label govuk-label--s" for="rc-review-details">
                 Give details
             </label>
             <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="review-details"
-                      name="review-details" rows="2"></textarea>
+                      name="rc-review-details" rows="2">{{ data['rc-review-details'] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
 
@@ -49,11 +51,11 @@
 
     {% set pastConcernDetailHtml %}
         <div class="govuk-form-group">
-            <label class="govuk-label govuk-label--s" for="concern-details">
+            <label class="govuk-label govuk-label--s" for="past-concern-details">
                 Give details, including when the concerns arose
             </label>
             <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0" id="past-concern-details"
-                      name="past-concern-details" rows="3"></textarea>
+                      name="past-concern-details" rows="3">{{ data['past--concern-details'] }}</textarea>
             <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
         </div>
     {% endset -%}
@@ -78,11 +80,13 @@
                     items: [
                         {
                             value: "presentsRisk",
-                            text: "Presents a risk to identifiable children"
+                            text: "Presents a risk to identifiable children",
+                            checked: checked("rc-individual", "presentsRisk")
                         },
                         {
                             value: "situationRisk",
-                            text: "Is in a situation where identifiable children are at risk from others"
+                            text: "Is in a situation where identifiable children are at risk from others",
+                            checked: checked("rc-individual", "situationRisk")
                         }
                     ]
                 }) }}
@@ -97,7 +101,7 @@
                         Name
                     </label>
 
-                    <input class="govuk-input govuk-input--width-20" id="rc-name" name="rc-name" type="text">
+                    <input class="govuk-input govuk-input--width-20" id="rc-name" name="rc-name" value="{{ data['rc-name'] }}" type="text">
                 </div>
 
 
@@ -105,7 +109,7 @@
                     <label class="govuk-label govuk-hint" for="rc-age">
                         Age
                     </label>
-                    <input class="govuk-input govuk-input--width-3" id="rc-age" name="rc-age" type="text">
+                    <input class="govuk-input govuk-input--width-3" id="rc-age" name="rc-age" type="text" value="{{ data['rc-age'] }}">
                 </div>
 
 
@@ -124,7 +128,7 @@
                                     </label>
 
 
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="rc-dob-day" name="rc-dob-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2"  value="{{ data['rc-dob-day'] }}"id="rc-dob-day" name="rc-dob-day" type="text" pattern="[0-9]*" inputmode="numeric">
                                 </div>
                             </div>
 
@@ -135,7 +139,7 @@
                                     </label>
 
 
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="rc-dob-month" name="rc-dob-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="rc-dob-month" value="{{ data['rc-dob-month'] }}" name="rc-dob-month" type="text" pattern="[0-9]*" inputmode="numeric">
                                 </div>
                             </div>
 
@@ -146,7 +150,7 @@
                                     </label>
 
 
-                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="rc-dob-year" name="rc-dob-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                                    <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="rc-dob-year" value="{{ data['rc-dob-year'] }}" name="rc-dob-year" type="text" pattern="[0-9]*" inputmode="numeric">
                                 </div>
                             </div>
 
@@ -161,7 +165,7 @@
                     <label class="govuk-label govuk-hint" for="rc-gender">
                         Gender
                     </label>
-                    <input class="govuk-input govuk-input--width-10" id="rc-gender" name="rc-gender" type="text">
+                    <input class="govuk-input govuk-input--width-10" id="rc-gender" name="rc-gender" type="text" value="{{ data['rc-gender'] }}">
                 </div>
 {#                {% set qId = 'rc-name' %}#}
 {#                {{ govukInput({#}
@@ -225,12 +229,12 @@
                     <label class="govuk-label govuk-hint" for="rc-address1">
                         Building and street
                     </label>
-                    <input class="govuk-input govuk-input--width-20" id="rc-address1" name="rc-address1" type="text">
+                    <input class="govuk-input govuk-input--width-20" id="rc-address1" name="rc-address1" type="text" value="{{ data['rc-address1'] }}">
                 </div>
 
 
                 <div class="govuk-form-group govuk-!-margin-bottom-2">
-                    <input class="govuk-input govuk-input--width-20" id="rc-address2" name="rc-address2" type="text">
+                    <input class="govuk-input govuk-input--width-20" id="rc-address2" name="rc-address2" type="text" value="{{ data['rc-address2'] }}">
                 </div>
 
 
@@ -238,7 +242,7 @@
                     <label class="govuk-label govuk-hint" for="rc-address3">
                         Town or city
                     </label>
-                    <input class="govuk-input govuk-input--width-12" id="rc-address3" name="rc-address3" type="text">
+                    <input class="govuk-input govuk-input--width-12" id="rc-address3" name="rc-address3" type="text" value="{{ data['rc-address3'] }}">
                 </div>
 
 
@@ -246,7 +250,7 @@
                     <label class="govuk-label govuk-hint" for="rc-address4">
                         County
                     </label>
-                    <input class="govuk-input govuk-input--width-12" id="rc-address4" name="rc-address4" type="text">
+                    <input class="govuk-input govuk-input--width-12" id="rc-address4" name="rc-address4" type="text" value="{{ data['rc-address4'] }}">
                 </div>
 
 
@@ -254,7 +258,7 @@
                     <label class="govuk-label govuk-hint" for="rc-address5">
                         Postcode
                     </label>
-                    <input class="govuk-input govuk-input--width-12" id="rc-address5" name="rc-address5" type="text">
+                    <input class="govuk-input govuk-input--width-12" id="rc-address5" name="rc-address5" type="text" value="{{ data['rc-address5'] }}">
                 </div>
 
 
@@ -331,11 +335,13 @@
                     items: [
                         {
                             value: "currently",
-                            text: "Currently"
+                            text: "Currently",
+                            checked: checked(qId, "currently")
                         },
                         {
                             value: "previously",
-                            text: "Previously"
+                            text: "Previously",
+                            checked: checked(qId, "previously")
                         }
                     ]
                 }) }}
@@ -355,6 +361,7 @@
                         {
                             value: "neglect",
                             text: "Neglect",
+                            checked: checked(qId, "neglect"),
                             conditional: {
                             html: cprPhysHtml
                         }
@@ -362,6 +369,7 @@
                         {
                             value: "physical",
                             text: "Physical",
+                            checked: checked(qId, "physical"),
                             conditional: {
                             html: cprPhysHtml
                         }
@@ -369,6 +377,7 @@
                         {
                             value: "sexual",
                             text: "Sexual",
+                            checked: checked(qId, "sexual"),
                             conditional: {
                             html: cprPhysHtml
                         }
@@ -376,6 +385,7 @@
                         {
                             value: "emotional",
                             text: "Emotional",
+                            checked: checked(qId, "emotional"),
                             conditional: {
                             html: cprPhysHtml
                         }
@@ -399,17 +409,20 @@
                         {
                             value: "yes",
                             text: "Yes",
+                            checked: checked(qId, "yes"),
                             conditional: {
                             html: reviewDetailHtml
                         }
                         },
                         {
                             value: "no",
-                            text: "No"
+                            text: "No",
+                            checked: checked(qId, "no")
                         },
                         {
                             value: "dont-know",
-                            text: "Don't know"
+                            text: "Don't know",
+                            checked: checked(qId, "dont-know")
                         }
                     ]
                 }) }}
@@ -442,19 +455,23 @@
                     items: [
                         {
                             value: "days",
-                            text: "Within days"
+                            text: "Within days",
+                            checked: checked(qId, "days")
                         },
                         {
                             value: "weeks",
-                            text: "Within weeks"
+                            text: "Within weeks",
+                            checked: checked(qId, "weeks")
                         },
                         {
                             value: "months",
-                            text: "Within months"
+                            text: "Within months",
+                            checked: checked(qId, "months")
                         },
                         {
                             value: "longer",
-                            text: "Longer"
+                            text: "Longer",
+                            checked: checked(qId, "longer")
                         }
                     ]
                 }) }}
@@ -473,15 +490,18 @@
                     items: [
                         {
                             value: "highly",
-                            text: "Highly likely"
+                            text: "Highly likely",
+                            checked: checked(qId, "highly")
                         },
                         {
                             value: "quite",
-                            text: "Quite likely"
+                            text: "Quite likely",
+                            checked: checked(qId, "quite")
                         },
                         {
                             value: "possible",
-                            text: "Possible, but not very likely"
+                            text: "Possible, but not very likely",
+                            checked: checked(qId, "possible")
                         }
                     ]
                 }) }}
@@ -493,7 +513,7 @@
                         Give details
                     </label>
                     <textarea class="govuk-textarea govuk-input--width-20 govuk-!-margin-bottom-0"
-                              id="rc-mitigating-action" name="rc-mitigating-action" rows="2"></textarea>
+                              id="rc-mitigating-action" name="rc-mitigating-action" rows="2">{{ data['rc-mitigating-action'] }}</textarea>
                     <div class="govuk-hint" style="margin-top:10px">You have 200 characters remaining</div>
                 </div>
 
@@ -514,17 +534,20 @@
                         {
                             value: "yes",
                             text: "Yes",
+                            checked: checked(qId, "yes"),
                             conditional: {
                             html: pastConcernDetailHtml
                         }
                         },
                         {
                             value: "no",
-                            text: "No"
+                            text: "No",
+                            checked: checked(qId, "no")
                         },
                         {
                             value: "dont-know",
-                            text: "Don't know"
+                            text: "Don't know",
+                            checked: checked(qId, "dont-know")
                         }
                     ]
                 }) }}
